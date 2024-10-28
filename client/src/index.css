@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Yeseva+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #FCFEFE;
+}
+
+.responsive-bg {
+  background-size: 100%;
+}
+
+
+@media (max-width: 639px) {
+  .sidebar {
+    width: calc(100% - 80px) !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .responsive-bg {
+    background-size: cover;
+  }
+
+  .sidebar {
+    width: calc(100% - 80px) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-bg {
+    background-size: 80%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-bg {
+    background-size: 75%;
+  }
+}
