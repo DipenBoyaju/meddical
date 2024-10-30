@@ -7,6 +7,7 @@ import { useState } from "react";
 const Navbar = () => {
   const nav = useNavigate();
   const [showNav, setShowNav] = useState(false)
+  const [search, setSearch] = useState(false)
   const linkStyle = ({ isActive }) => isActive ? 'md:text-light text-primary font-semibold' : 'text-lighter';
   return (
     <div className="bg-primary px-4 md:px-20 lg:px-44 py-4 md:text-lighter text-primary font-worksans text-center text-2xl md:text-lg md:font-light flex flex-row justify-between items-center w-full relative">
@@ -28,8 +29,11 @@ const Navbar = () => {
         </div>
       </nav>
       <div className="flex flex-row items-center gap-5">
-        <div className="">
-          <LuSearch className="text-[27px] cursor-pointer text-light" />
+        <div className={`flex ${search ? 'bg-white' : 'bg-transparent'} h-[40px] items-center pr-3 overflow-hidden rounded-full`}>
+          {
+            search && <input type="text" className="h-full focus:outline-none pl-2 text-dark text-sm" />
+          }
+          <LuSearch className="text-[27px] cursor-pointer text-light" onClick={() => setSearch(true)} />
         </div>
         <div className="cursor-pointer md:hidden text-light" onClick={() => setShowNav((prev) => !prev)}>
           {

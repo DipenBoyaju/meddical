@@ -149,6 +149,7 @@ const AppointmentForm = () => {
               className="w-full bg-transparent placeholder:text-lighter p-4 font-[300] h-[50px] border-r focus:outline-none pr-8 appearance-none"
               onFocus={(e) => (e.target.type = "date")}
               onBlur={(e) => (e.target.type = "text")}
+              min={new Date().toISOString().split("T")[0]}
               style={{
                 backgroundImage: `url(${arrow})`,
                 backgroundPosition: "right 16px center",

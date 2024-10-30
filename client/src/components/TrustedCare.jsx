@@ -44,7 +44,7 @@ const TrustedCare = () => {
             {
               doctors.map((doctor) => (
                 <div style={{ margin: '0 15px 50px 0' }} key={doctor?._id}>
-                  <DoctorCard name={doctor?.name} post={doctor?.department} image={doctor?.image} />
+                  <DoctorCard name={doctor?.name} post={doctor?.department} image={doctor?.image} id={doctor?._id} />
                 </div>
               ))
             }

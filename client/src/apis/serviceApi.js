@@ -38,8 +38,15 @@ export const serviceApi = createApi({
         method: 'DELETE'
       }),
       invalidatesTags: ['Service']
-    })
+    }),
+    getServiceById: builder.query({
+      query: (id) => ({
+        url: `/getServiceById/${id}`,
+        method: 'GET'
+      }),
+      providesTags: ['Service']
+    }),
   })
 })
 
-export const { useCreateServiceMutation, useGetAllServiceQuery, useEditServiceMutation, useDeleteServiceMutation } = serviceApi
+export const { useCreateServiceMutation, useGetAllServiceQuery, useEditServiceMutation, useDeleteServiceMutation, useGetServiceByIdQuery } = serviceApi

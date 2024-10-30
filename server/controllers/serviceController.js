@@ -109,3 +109,28 @@ export const getAllServices = async (req, res) => {
     });
   }
 };
+
+export const getServiceById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const singleService = await ServiceModel.findById(id);
+
+    if (!singleService) {
+      return res.status(404).json({
+        success: false,
+        message: "Service not found.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: singleService,
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

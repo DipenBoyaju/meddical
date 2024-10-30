@@ -1,8 +1,10 @@
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
-const DoctorCard = ({ name, image, post }) => {
+const DoctorCard = ({ name, image, post, id }) => {
+  const nav = useNavigate()
   return (
     <div className="rounded-lg overflow-hidden font-worksans">
       <div className="h-[350px] w-full overflow-hidden">
@@ -23,7 +25,7 @@ const DoctorCard = ({ name, image, post }) => {
           </div>
         </div>
       </div>
-      <div className=" bg-primary p-3 font-worksans capitalize cursor-pointer text-light hover:bg-secondary hover:text-lighter text-center transition-all duration-300 text-lg">view profile</div>
+      <div className=" bg-primary p-3 font-worksans capitalize cursor-pointer text-light hover:bg-secondary hover:text-lighter text-center transition-all duration-300 text-lg" onClick={() => nav(`/doctors/${id}`)}>view profile</div>
     </div>
   )
 }

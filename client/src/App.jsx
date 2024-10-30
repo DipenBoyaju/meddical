@@ -20,6 +20,8 @@ import Appointments from "./dashboard/pages/Appointments";
 import Profile from "./dashboard/pages/Profile";
 import SingleNews from "./components/SingleNews";
 import Blogs from "./dashboard/pages/Blogs";
+import ServiceList from "./pages/ServiceList";
+import SingleDoctorInfo from "./components/shared/SingleDoctorInfo";
 
 const App = () => {
 
@@ -31,7 +33,9 @@ const App = () => {
         { index: true, element: <Homepage /> },
         { path: '/aboutus', element: <About /> },
         { path: '/services', element: <Services /> },
+        { path: '/service', element: <ServiceList /> },
         { path: '/doctors', element: <Doctors /> },
+        { path: '/doctors/:id', element: <SingleDoctorInfo /> },
         { path: '/news', element: <News /> },
         { path: '/contact', element: <Contact /> },
         { path: '/appointment', element: <Appointment /> },
