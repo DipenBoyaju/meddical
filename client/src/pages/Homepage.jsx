@@ -10,7 +10,7 @@ import Welcome from "../components/Welcome"
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="">
       <Hero />
       <Features />
       <Welcome />

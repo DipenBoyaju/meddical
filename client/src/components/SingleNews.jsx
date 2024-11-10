@@ -14,7 +14,7 @@ const SingleNews = () => {
   const blog = data?.data
 
   return (
-    <div>
+    <div className="mt-[10%] md:mt-0">
       <div className="px-4 md:px-20 lg:px-44 h-64 relative" style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: `center 15%` }}>
         <div className="h-full w-full absolute bg-white left-0 top-0 opacity-50 z-10"></div>
         <div className="pt-20 z-20 relative">
@@ -45,7 +45,7 @@ const SingleNews = () => {
         </div>
       </div >
       <div className="flex flex-row md:px-20 px-4 lg:px-44 pt-14 gap-5">
-        <div className="w-2/3">
+        <div className="md:w-2/3">
           <div className="w-full h-[60vh] overflow-hidden">
             <img src={blog?.image} alt="" className='w-full' />
           </div>
@@ -53,7 +53,7 @@ const SingleNews = () => {
             <p className="font-[500] text-lg">{blog?.description}</p>
           </div>
         </div>
-        <div className="w-1/3">
+        <div className="w-1/3 hidden md:block">
           <div className=" bg-primary w-full rounded-md flex justify-between items-center overflow-hidden">
             <input type="text" className="px-3 w-full focus:outline-none h-[50px] bg-transparent text-light placeholder:text-light" placeholder="Search" />
             <div className="px-3">

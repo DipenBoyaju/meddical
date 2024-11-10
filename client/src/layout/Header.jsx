@@ -8,8 +8,8 @@ import clock from '../assets/clock.svg'
 const Header = () => {
   const nav = useNavigate()
   return (
-    <div className="md:fixed flex flex-col bg-[#FCFEFE] w-full z-50">
-      <div className="px-4 md:px-20 lg:px-44 py-5 md:flex justify-between flex-wrap items-center w-full">
+    <div className="flex flex-col bg-[#FCFEFE] w-full z-50">
+      <div className="px-4 md:px-20 lg:px-44 py-5 md:flex justify-between flex-wrap items-center w-full hidden">
         <div className="">
           <span className="text-primary text-4xl font-yeseva hidden md:block cursor-pointer" onClick={() => nav('/')}>MED<span className="text-secondary">DICAL</span></span>
         </div>

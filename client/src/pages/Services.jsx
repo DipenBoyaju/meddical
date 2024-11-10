@@ -7,7 +7,7 @@ import { useGetAllServiceQuery } from "../apis/serviceApi"
 const Services = () => {
   const { data } = useGetAllServiceQuery()
   return (
-    <div>
+    <div className="mt-[10%] md:mt-0">
       <Title title="Our Services" subtitle="Services" bg={bg} position="45%" />
       <div className="flex flex-row">
         <div className="h-2 bg-light w-[16%]"></div>

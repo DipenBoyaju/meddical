@@ -8,7 +8,7 @@ const RootLayout = () => {
     <div>
       <ScrollToTop />
       <Header />
-      <div className="pt-0 md:pt-36">
+      <div className="">
         <Outlet />
       </div>
       <Footer />

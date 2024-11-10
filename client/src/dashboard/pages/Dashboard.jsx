@@ -9,12 +9,29 @@ import { useGetAllServiceQuery } from "../../apis/serviceApi";
 import { useGetAllDoctorQuery } from "../../apis/doctorApi";
 import { useGetAllDepartmentQuery } from "../../apis/departmentApi";
 import { useGetAllAppointmentQuery } from "../../apis/appointmentApi";
+import RecentAppointments from "../components/RecentAppointments";
+import AvailableDoctor from "../components/AvailableDoctor";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const { data: service } = useGetAllServiceQuery()
   const { data: doctor } = useGetAllDoctorQuery()
   const { data: department } = useGetAllDepartmentQuery()
   const { data: appointments } = useGetAllAppointmentQuery()
+
+  const [todayAppointmentsCount, setTodayAppointmentsCount] = useState(0);
+
+  useEffect(() => {
+    if (appointments?.data) {
+      const today = new Date().toISOString().split("T")[0];
+      const todayAppointments = appointments?.data?.filter((appointment) => {
+        const appointmentDate = new Date(appointment.appointmentDate).toISOString().split('T')[0]
+        return appointmentDate === today;
+      });
+
+      setTodayAppointmentsCount(todayAppointments.length);
+    }
+  }, [appointments]);
 
   return (
     <div className="font-worksans pt-3">
@@ -26,7 +43,15 @@ const Dashboard = () => {
         <DashboardCard image={MdMedicalServices} title="Services" color={"bg-red-400"} number={service?.data?.length} />
         <DashboardCard image={FaUserDoctor} title="Doctors" color={"bg-blue-400"} number={doctor?.data?.length} />
         <DashboardCard image={FaBuildingUser} title="Departments" color={"bg-green-400"} number={department?.data?.length} />
-        <DashboardCard image={FaClipboardList} title="Appointments" color={"bg-yellow-400"} subtext="Today" number={appointments?.data?.length} />
+        <DashboardCard image={FaClipboardList} title="Appointments" color={"bg-yellow-400"} subtext="Today" number={todayAppointmentsCount} />
+      </div>
+      <div className="flex flex-col md:flex-row gap-5  my-5">
+        <div className="md:w-2/3">
+          <RecentAppointments appointments={appointments} />
+        </div>
+        <div className="md:w-1/3">
+          <AvailableDoctor doctors={doctor} />
+        </div>
       </div>
     </div>
   )

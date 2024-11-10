@@ -8,15 +8,6 @@ import { FaPlus } from "react-icons/fa";
 import { useCreateDepartmentMutation } from "../../apis/departmentApi";
 import Select from 'react-select';
 import { useGetAllDoctorQuery } from "../../apis/doctorApi";
-const timeOptions = [
-  { value: 'Sunday', label: 'Sunday' },
-  { value: 'Monday', label: 'Monday' },
-  { value: 'Tuesday', label: 'Tuesday' },
-  { value: 'Wednesday', label: 'Wednesday' },
-  { value: 'Thursday', label: 'Thursday' },
-  { value: 'Friday', label: 'Friday' },
-  { value: 'Saturday', label: 'Saturday' },
-];
 
 const AddDepartment = ({ setAddDepartment }) => {
   const [formData, setFormData] = useState({
@@ -27,6 +18,16 @@ const AddDepartment = ({ setAddDepartment }) => {
     doctors: [],
     image: ''
   });
+  const timeOptions = [
+    { value: 'Sunday', label: 'Sunday' },
+    { value: 'Monday', label: 'Monday' },
+    { value: 'Tuesday', label: 'Tuesday' },
+    { value: 'Wednesday', label: 'Wednesday' },
+    { value: 'Thursday', label: 'Thursday' },
+    { value: 'Friday', label: 'Friday' },
+    { value: 'Saturday', label: 'Saturday' },
+  ];
+
   const [selectedOption, setSelectedOption] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState([]);
   const [previewImage, setPreviewImage] = useState(image);

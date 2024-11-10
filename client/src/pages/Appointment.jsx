@@ -18,7 +18,7 @@ const Appointment = () => {
   ];
 
   return (
-    <div className="">
+    <div className="mt-[10%] md:mt-0">
       <Title title="Book an Appointment" subtitle="Appointment" bg={bg} position="25%" />
       <div className="flex flex-row">
         <div className="h-2 bg-light w-[16%]"></div>

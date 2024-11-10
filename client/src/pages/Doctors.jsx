@@ -8,7 +8,7 @@ import { useGetAllDoctorQuery } from "../apis/doctorApi"
 const Doctors = () => {
   const { data } = useGetAllDoctorQuery();
   return (
-    <div>
+    <div className="mt-[10%] md:mt-0">
       <Title title="Our Doctors" subtitle="Doctors" bg={bg} position="25%" />
       <div className="flex flex-row">
         <div className="h-2 bg-light w-[16%]"></div>

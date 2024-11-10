@@ -46,7 +46,16 @@ export const serviceApi = createApi({
       }),
       providesTags: ['Service']
     }),
+
+    searchService: builder.query({
+      query: (query) => ({
+        url: `/searchService?query=${query}`,
+        method: 'GET'
+      }),
+      providesTags: ['Service']
+    })
+
   })
 })
 
-export const { useCreateServiceMutation, useGetAllServiceQuery, useEditServiceMutation, useDeleteServiceMutation, useGetServiceByIdQuery } = serviceApi
+export const { useCreateServiceMutation, useGetAllServiceQuery, useEditServiceMutation, useDeleteServiceMutation, useGetServiceByIdQuery, useSearchServiceQuery } = serviceApi

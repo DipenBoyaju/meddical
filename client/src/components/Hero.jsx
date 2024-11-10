@@ -17,7 +17,7 @@ const Hero = () => {
       >
 
         <div className="bg-gradient-to-r from-[#E5E4E8] via-[#E5E4E8] h-full w-[35vw]">
-          <div className="absolute top-80 px-4 md:px-20 lg:px-44 flex flex-col gap-1">
+          <div className="absolute top-48 md:top-80 px-4 md:px-20 lg:px-44 flex flex-col gap-1">
             <p className='text-lg tracking-wider font-worksans font-bold uppercase text-secondary'>Caring for Life</p>
             <h2 className='text-3xl md:text-5xl font-yeseva text-primary font-[500] leading-tight'>Leading the Way<br />in Medical Excellence</h2>
             <div className="mt-8">

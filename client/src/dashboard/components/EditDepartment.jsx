@@ -31,8 +31,8 @@ const EditDepartment = ({ setEditDepartment, department }) => {
   const [selectedDoctor, setSelectedDoctor] = useState([]);
   const [previewImage, setPreviewImage] = useState(image);
   const [editDepartment, { isLoading }] = useEditDepartmentMutation();
-  const { data } = useGetAllDoctorQuery()
-  const doctorOptions = data?.data?.map(doctor => ({
+  const { data: doctorList } = useGetAllDoctorQuery()
+  const doctorOptions = doctorList?.data?.map(doctor => ({
     value: doctor._id,
     label: doctor.name + ' ' + `(${doctor.specialization})`
   }));
@@ -54,21 +54,15 @@ const EditDepartment = ({ setEditDepartment, department }) => {
       );
 
       setSelectedDoctor(
-        department?.doctors?.map(doctor => ({
-          value: doctor?._id || '',
-          label: doctor.name || 'Unknown'
-        })) || []
+        department?.doctors?.map(doctorId => {
+          const doctor = doctorList?.data?.find(d => d._id === doctorId);
+          return doctor ? { value: doctor?._id, label: `${doctor?.name} (${doctor.specialization})` } : null;
+        }).filter(Boolean)
       );
     }
-  }, [department]);
-
-
-  const handleDoctorChange = (newDoctors) => {
-    const mergedDoctors = [
-      ...new Map([...selectedDoctor, ...newDoctors].map(item => [item.value, item])).values()
-    ];
-    setSelectedDoctor(mergedDoctors);
-  };
+  }, [department, doctorList]);
+  console.log('docotr', formData?.doctors);
+  console.log('sekecyed', selectedDoctor);
 
   const handleAddTimeSlot = () => {
     setFormData(prevFormData => ({
@@ -100,15 +94,11 @@ const EditDepartment = ({ setEditDepartment, department }) => {
 
     const imageUrl = formData.image ? await uploadFile(formData.image) : department.image;
 
-    const validDoctorIds = selectedDoctor
-      .map(option => option.value)
-      .filter(id => id);
-
     const updatedFormData = {
       ...formData,
       image: imageUrl.url || department?.image,
-      days: selectedOption.map(option => option.value),
-      doctors: validDoctorIds,
+      days: selectedOption?.map(option => option.value),
+      doctors: selectedDoctor?.map(option => option.value)
     };
     console.log("Updated days:", updatedFormData.days);
     console.log("Updated form data:", updatedFormData);
@@ -214,7 +204,7 @@ const EditDepartment = ({ setEditDepartment, department }) => {
               <label className="block text-gray-700">Select Doctors</label>
               <Select
                 value={selectedDoctor}
-                onChange={handleDoctorChange}
+                onChange={setSelectedDoctor}
                 options={doctorOptions}
                 isMulti={true}
               />

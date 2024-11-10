@@ -8,7 +8,7 @@ import Testimonials from "../components/Testimonials"
 
 const About = () => {
   return (
-    <div>
+    <div className="mt-[10%] md:mt-0">
       <Title title="About us" subtitle="About" bg={bg} position="25%" />
       <div className="flex flex-row">
         <div className="h-2 bg-light w-[16%]"></div>

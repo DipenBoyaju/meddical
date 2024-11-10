@@ -134,3 +134,29 @@ export const getServiceById = async (req, res) => {
     });
   }
 };
+
+export const searchService = async (req, res) => {
+  const { query } = req.query;
+  if (!query) {
+    return res.status(400).json({
+      success: false,
+      message: 'No query parameter provided',
+    });
+  }
+
+  try {
+    const services = await ServiceModel.find({
+      title: { $regex: query, $options: 'i' },
+    });
+
+    return res.status(200).json({
+      success: true,
+      data: services,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
