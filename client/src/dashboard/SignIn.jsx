@@ -65,7 +65,7 @@ const SignIn = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
+              placeholder="Enter your email" required
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
@@ -77,6 +77,7 @@ const SignIn = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
+              required
               placeholder="Enter your password"
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
